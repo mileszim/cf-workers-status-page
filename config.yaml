@@ -1,5 +1,5 @@
 settings:
-  title: 'Status Page'
+  title: 'status.zim.dev'
   url: 'https://status.zim.dev' # used for Slack messages
   logo: logo-192x192.png # image in ./public/ folder
   gravatar_email: 'miles@zim.dev'
