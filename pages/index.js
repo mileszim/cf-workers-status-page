@@ -25,10 +25,12 @@ const filterByTerm = (term) =>
 export async function getEdgeProps() {
   // get KV data
   const kvMonitors = await getKVMonitors()
+  const gravatarUrl = await gravatarUrl(config.settings.gravatar_email)
 
   return {
     props: {
       config,
+      gravatarUrl,
       kvMonitors: kvMonitors ? kvMonitors.monitors : {},
       kvMonitorsLastUpdate: kvMonitors ? kvMonitors.lastUpdate : {},
     },
@@ -37,7 +39,7 @@ export async function getEdgeProps() {
   }
 }
 
-export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
+export default function Index({ config, gravatarUrl, kvMonitors, kvMonitorsLastUpdate }) {
   const state = useStore(MonitorStore)
   const slash = useKeyPress('/')
 
@@ -70,7 +72,7 @@ export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
       <div className="container mx-auto px-4">
         <div className="flex flex-row justify-between items-center p-4">
           <div className="flex flex-row items-center">
-            <img className="h-8 w-auto" src={gravatarUrl(config.settings.gravatar_email)} />
+            <img className="h-8 w-auto" src={gravatarUrl} />
             <h1 className="ml-4 text-3xl">{config.settings.title}</h1>
           </div>
           <div className="flex flex-row items-center">
