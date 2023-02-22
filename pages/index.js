@@ -2,13 +2,12 @@ import { Store } from 'laco'
 import { useStore } from 'laco-react'
 import Head from 'flareact/head'
 
-import { getKVMonitors, useKeyPress } from '../src/functions/helpers'
+import { getKVMonitors, useKeyPress, gravatarUrl } from '../src/functions/helpers'
 import config from '../config.yaml'
 import MonitorCard from '../src/components/monitorCard'
 import MonitorFilter from '../src/components/monitorFilter'
 import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
-import Gravatar from '../src/components/gravatar'
 
 const MonitorStore = new Store({
   monitors: config.monitors,
@@ -71,7 +70,7 @@ export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
       <div className="container mx-auto px-4">
         <div className="flex flex-row justify-between items-center p-4">
           <div className="flex flex-row items-center">
-            <Gravatar email={config.settings.gravatar_email} />
+            <img className="h-8 w-auto" src={gravatarUrl(config.settings.gravatar_email)} />
             <h1 className="ml-4 text-3xl">{config.settings.title}</h1>
           </div>
           <div className="flex flex-row items-center">
