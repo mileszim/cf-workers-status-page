@@ -143,7 +143,7 @@ export async function getCheckLocation() {
   return res.headers.get('cf-ray').split('-')[1]
 }
 
-export async function gravatarHash(email) => {
+export async function gravatarHash(email) {
   const encodedEmail = new TextEncoder().encode(email)
   const digested = await crypto.subtle.digest({ name: 'MD5' }, encodedEmail)
   return digested.map(i => i.toString(16).padStart(2, '0')).join('')
