@@ -25,7 +25,8 @@ const filterByTerm = (term) =>
 export async function getEdgeProps() {
   // get KV data
   const kvMonitors = await getKVMonitors()
-  const gravatarUrl = await gravatarUrl(config.settings.gravatar_email)
+//   const gravatarUrl = await gravatarUrl(config.settings.gravatar_email)
+  const gravatarUrl = 'https://www.gravatar.com/avatar/928ebab92f50ed19f1157090f5bb124e';
 
   return {
     props: {
