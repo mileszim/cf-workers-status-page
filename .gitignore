@@ -132,6 +132,5 @@ worker/
 .envrc
 .direnv/
 out/
-package-lock.json
 public/style.css
 !.yarn/releases/yarn-*
