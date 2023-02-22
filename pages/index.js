@@ -8,12 +8,7 @@ import MonitorCard from '../src/components/monitorCard'
 import MonitorFilter from '../src/components/monitorFilter'
 import MonitorStatusHeader from '../src/components/monitorStatusHeader'
 import ThemeSwitcher from '../src/components/themeSwitcher'
-
-const gravatarUrl = async (email = '') => {
-  const encodedEmail = new TextEncoder().encode(email)
-  const digested = await crypto.subtle.digest({ name: 'MD5' }, encodedEmail)
-  return digested.map(i => i.toString(16).padStart(2, '0')).join('')
-}
+import Gravatar from '../src/components/gravatar'
 
 const MonitorStore = new Store({
   monitors: config.monitors,
@@ -76,7 +71,7 @@ export default function Index({ config, kvMonitors, kvMonitorsLastUpdate }) {
       <div className="container mx-auto px-4">
         <div className="flex flex-row justify-between items-center p-4">
           <div className="flex flex-row items-center">
-            <img className="h-8 w-auto" src={gravatarUrl(config.settings.gravatar_email)} />
+            <Gravatar email={config.settings.gravatar_email} />
             <h1 className="ml-4 text-3xl">{config.settings.title}</h1>
           </div>
           <div className="flex flex-row items-center">
